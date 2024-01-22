@@ -13,7 +13,7 @@ export class Session{
    @Prop()
    page:String;
    @Prop()
-   Start_time:String;
+   start_time:String;
    @Prop()
    end_time:String;
    @Prop()
