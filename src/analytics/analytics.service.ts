@@ -16,11 +16,11 @@ export class AnalyticsService {
     //console.log(createAnalyticsDto);
      try{
       //console.log(createAnalyticsDto);
-    const data= new  this.sessionModel(createAnalyticsDto);
-    console.log(data)
+    const value= new  this.sessionModel(createAnalyticsDto);
+    console.log(value)
     //await data.save();
     //console.log(newUser);
-      return data;
+      return value.save();
 
       
 
