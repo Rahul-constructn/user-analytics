@@ -9,18 +9,15 @@ import { Model, Connection } from 'mongoose';
 @Injectable()
 export class AnalyticsService {
 
-  constructor(@InjectModel(Session.name) private sessionModel:Model<Session>,@InjectConnection() private connection : Connection){}
+  constructor(@InjectModel(Session.name) private sessionModel:Model<Session>){}
 
 
   async create(createAnalyticsDto: CreateAnalyticsDto): Promise<Session> {
-    //console.log(createAnalyticsDto);
+   
      try{
-      //console.log(createAnalyticsDto);
+     
     const data= new  this.sessionModel(createAnalyticsDto);
-    console.log(data)
-    //await data.save();
-    //console.log(newUser);
-      return data;
+      return data.save();
 
       
 
