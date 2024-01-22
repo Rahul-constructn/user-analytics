@@ -5,7 +5,7 @@ export class CreateAnalyticsDto {
 
    page:String;
 
-   Start_time:String;
+   start_time:String;
 
    end_time:String;
 

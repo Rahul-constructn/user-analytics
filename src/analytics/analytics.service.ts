@@ -32,7 +32,7 @@ export class AnalyticsService {
   }
 
 
-  async getActiveUsers(){
+  async getActiveUniqueUsers(){
     try {
       const result = await this.sessionModel.aggregate([
         {
@@ -52,6 +52,31 @@ export class AnalyticsService {
     catch(err){
       console.log(err);
     }
+  }
+
+  async getAllprojects(){
+    const result= await this.sessionModel.aggregate([
+     { 
+      $group:{
+        _id:{
+          project:'$project',
+        },
+        
+      }
+    }
+    ])
+    return result;
+  }
+
+  async getProjectById(projectId:string){
+    const result= await this.sessionModel.aggregate([
+      {
+        $match:{
+          project:projectId
+        }
+      }
+    ])
+    return result;
   }
 
   findOne(id: number) {

@@ -13,10 +13,19 @@ export class AnalyticsController {
     return this.analyticsService.create(createAnalyticsDto);
   }
 
-  @Get('/getActiveUsers')
+  @Get('/getActiveUniqueUsers')
  async  getActiveUsers(){
-    const activeuniqueusers=await this.analyticsService.getActiveUsers();
+    const activeuniqueusers=await this.analyticsService.getActiveUniqueUsers();
     return {activeuniqueusers};
+  }
+  @Get('allProjects')
+  getAllprojects(){
+    return  this.analyticsService.getAllprojects();
+  }
+
+  @Get('/getProjectById/:projectId')
+  getProjectById(@Param('projectId') projectId:string){
+    return this.analyticsService.getProjectById(projectId);
   }
 
   @Get()
