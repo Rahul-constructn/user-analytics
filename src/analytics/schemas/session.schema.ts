@@ -13,11 +13,13 @@ export class Session{
    @Prop()
    page:String;
    @Prop()
-   start_time:String;
+   start_time:Date;
    @Prop()
-   end_time:String;
+   end_time:Date;
    @Prop()
    device:String;
+   @Prop()
+   timeSpent:string;
 
       
 

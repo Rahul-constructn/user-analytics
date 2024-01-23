@@ -1,36 +1,39 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
 import { PageService, ProjectService } from './project.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { CreatePageDto } from './dto/create-page.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('project')
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
   @Post()
-  create(@Body() createProjectDto: CreateProjectDto) {
-    return this.projectService.create(createProjectDto);
+  @UseGuards(AuthGuard())
+  createproject(@Body() createProjectDto: CreateProjectDto,@Req() req) {
+    return this.projectService.createproject(createProjectDto,req.user);
   }
 
   @Get()
-  findAll() {
-    return this.projectService.findAll();
+  findAllproject() {
+    return this.projectService.findAllproject();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.projectService.findOne(+id);
+  @UseGuards(AuthGuard())
+  findOneproject(@Param('id') id: string,@Req() req) {
+    return this.projectService.findOneproject(id,req.user);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
-    return this.projectService.update(+id, updateProjectDto);
+  updateproject(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
+    return this.projectService.updateproject(+id, updateProjectDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.projectService.remove(+id);
+  removeproject(@Param('id') id: string) {
+    return this.projectService.removeproject(+id);
   }
 }
 
@@ -41,12 +44,24 @@ export class PageController {
   constructor(private readonly pageService: PageService) {}
 
   @Post()
-  create(@Body() createPageDto: CreatePageDto) {
+  createpage(@Body() createPageDto: CreatePageDto) {
     return this.pageService.createPage(createPageDto);
   }
 
   @Get()
-  findAll() {
-    return this.pageService.findAll();
+  findAllpage() {
+    return this.pageService.findAllpage();
   }
+
+  @Get('/:id')
+  @UseGuards(AuthGuard())
+  findOnePage(@Param('id') id:string,@Req() req){
+    return this.pageService.findOnePage(id,req.user);
+  }
+
+  @Get('/endSession/:id')
+  endPageSession(@Param('id') id : string){
+    return this.pageService.endPageSession(id);
+  }
+
 }

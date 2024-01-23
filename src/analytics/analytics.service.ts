@@ -16,6 +16,7 @@ export class AnalyticsService {
    
      try{
      
+      
     const data= new  this.sessionModel(createAnalyticsDto);
       return data.save();
 

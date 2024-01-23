@@ -9,5 +9,6 @@ import { Session,SessionSchema } from './schemas/session.schema';
   imports:[MongooseModule.forFeature([{ name: Session.name, schema: SessionSchema }])],
   controllers: [AnalyticsController],
   providers: [AnalyticsService],
+  exports:[]
 })
 export class AnalyticsModule {}

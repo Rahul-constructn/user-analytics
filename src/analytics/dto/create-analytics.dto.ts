@@ -5,9 +5,11 @@ export class CreateAnalyticsDto {
 
    page:String;
 
-   start_time:String;
+   start_time:Date;
 
-   end_time:String;
+   end_time:Date;
 
    device:String;
+
+   timeSpent:string;
 }
