@@ -10,9 +10,17 @@ export class User extends Document{
   
     @Prop({ unique: [true, 'Duplicate email entered'] })
     email: string;
+
+    @Prop()
+    status:Status;
   
     @Prop()
     password: string;
+  }
+
+  enum Status{
+    active,
+    inactive
   }
   
   export const UserSchema = SchemaFactory.createForClass(User);

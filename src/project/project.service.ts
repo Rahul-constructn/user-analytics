@@ -65,9 +65,8 @@ export class PageService {
 
   findAllpage() {
     const start_time=new Date();
-    const end_time=new Date()
-    const timeDifference = end_time.getTime() - start_time.getTime();
-    console.log(timeDifference)
+    const end_time=new Date();
+  
     return this.pageModel.find();
   }
 

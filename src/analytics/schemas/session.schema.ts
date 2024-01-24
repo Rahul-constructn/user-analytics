@@ -20,9 +20,7 @@ export class Session{
    device:String;
    @Prop()
    timeSpent:string;
-
-      
-
+   
 
 }
 

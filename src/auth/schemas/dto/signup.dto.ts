@@ -13,4 +13,12 @@ export class SignUpDto {
   @IsString()
   @MinLength(6)
   readonly password: string;
+
+  @IsNotEmpty()
+  @IsString()
+  status:Status;
+}
+enum Status{
+  active,
+  inactive
 }

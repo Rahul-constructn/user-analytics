@@ -12,4 +12,6 @@ export class CreateAnalyticsDto {
    device:String;
 
    timeSpent:string;
+
+   status:string;
 }
